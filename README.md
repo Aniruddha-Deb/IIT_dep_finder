@@ -17,7 +17,7 @@ python3 iit_dep_finder.py <rank>
 This lists the departments sorted in increasing order of closing rank, with opening rank > your rank and closing rank < your rank, and closing rank < 1200 (tweak this in the `criteria_satisfied` method if needed)
 Here's an example:
 ```
-python3 iit_dep_finder.py 300
+python3 iit_dep_finder.py 280
 Kharagpur Computer Science and Engineering(BTech) 204 283
 Bombay Electrical Engineering(BTech) 71 292
 Delhi Mathematics and Computing(BTech) 97 314
