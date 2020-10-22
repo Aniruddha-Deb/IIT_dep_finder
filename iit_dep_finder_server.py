@@ -30,6 +30,7 @@ SELECT * FROM orcr_2020 WHERE
 ((OPR>=:advRank AND CPR<=:advRank) OR ((CPR-:advRank)>=0 AND (CPR-:advRank)<500)) AND
 institute LIKE "Indian Institute of Technology %" AND 
 category=:category AND gender=:gender
+ORDER BY CPR ASC
 """
 
 @app.route("/")
@@ -50,6 +51,9 @@ def get_deps():
 	data = request.get_json()
 	db_cursor.execute(ADV_NOP_QUERY, data)
 	deps = db_cursor.fetchall()
+	
+	for dep in deps:
+		print(dep)
 
 	return json.dumps(deps)
 

@@ -45,7 +45,7 @@ p {
 .result {
 	width: 50%;
 	padding: 10px 15px 10px 15px;
-	margin: auto;
+	margin: 10px auto;
 	color: lightgrey;
 	border: 1px solid lightgrey;
 	display: table;
