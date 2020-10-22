@@ -2,29 +2,93 @@ body {
 	background-color: #222322;
 	color: #fbfbfb;
 	font-family: Helvetica, sans-serif;
-	animation-name: fadein;
-	animation-duration: 2s;
 }
 
 .content {
-	padding: 10pt 0 20pt 0;
+	padding: 15px 0 0 0;
 	text-align: center;
 }
 
-@keyframes fadein {
-	from {opacity: 0.2;}
-	to {opacity: 1;}
+h1 {
+	padding: 0 0 30px 0;
+}
+
+.submitButton {
+	height: 48px;
+	font-size: 20px;
+	padding: 5px 15px 5px 15px;
+	background-color: #4bbd5e;
+	color: #fbfbfb;
+	border: 1px solid green;
+	border-radius: 8px;
 }
 
 input {
 	background-color: #222322;
 	color: #aaaaaa;
 	width: 50%;
-	border: 1pt solid grey;
-	border-radius: 4pt;
+	border: 2px solid grey;
+	border-radius: 8px;
 	text-align: center;
-	font-size: 18pt;
-	padding: 5pt 5pt 5pt 5pt;
+	font-size: 25px;
+	padding: 8px 5px 8px 5px;
+}
+
+.results {
+	padding: 26px 0 20px 0;
+}
+
+p {
+	padding: 0 0 0 20%;
+}
+
+.result {
+	width: 50%;
+	padding: 10px 15px 10px 15px;
+	margin: auto;
+	color: lightgrey;
+	border: 1px solid lightgrey;
+	display: table;
+	border-radius: 8px;
+}
+
+.result:hover {
+	color: white;
+	border-color: white;
+}
+
+.resultHeader {
+	display: table-row;
+}
+
+.resultMainData {
+	display: table-row;
+}
+
+.resultHeaderFiller {
+	display: table-cell;
+	width: 80%;
+}
+
+.resultHeaderPrompt {
+	font-size: 10px;
+	padding: 0 5px 0 5px;
+	display: table-cell;
+	text-align: center;
+}
+
+.resultInstitute {
+	font-size: 24px;
+	display: table-cell;
+	vertical-align: top;
+	padding: 0 0 4px 0;
+	width: 80%;
+}
+
+.resultRank {
+	font-size: 22px;
+	padding: 3px 8px 3px 8px;
+	display: table-cell;
 }
 
 input:focus {
@@ -38,11 +102,9 @@ input:focus::placeholder {
 hr {
 	width: 80%;
 	border-top: 1px solid lightgrey;
-	animation-delay: 3s;
 }
 
 .footer {
 	text-align: center;
 	padding: 20pt 20pt 20pt 20pt;
-	animation-delay: 3s;
 }
