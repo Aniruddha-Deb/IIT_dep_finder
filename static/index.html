@@ -9,24 +9,16 @@
 			<h1>IIT Dep Finder</h1>
 			<input type="number" id="rank" placeholder="JEE Advanced Rank" min="1">
 			<button class="submitButton" onclick="getDeps()">Go</button>
-		</div>
-
-		<div class="results" id="results">
-			<p> Results: </p>
-			<div class="result">
-				<div class="resultHeader">
-					<div class="resultHeaderFiller"></div>
-					<div class="resultHeaderPrompt">OR</div>
-					<div class="resultHeaderPrompt">CR</div>
-				</div>
-				<div class="resultMainData">
-					<div class="resultInstitute">IIT Bombay</div>
-					<div class="resultRank">312</div>
-					<div class="resultRank">386</div>
-				</div>
-				<div class="resultDepartment">Computer Science and Engineering</div>
+			<button class="advOptionsButton" id="advOptionsButton" onclick="showAdvOptions()">
+				<i id="advOptionsButtonArrow" class="arrow right"></i> Advanced Options
+			</button>
+			<div class="advOptions" id="advOptions">
+				just some test content here
 			</div>
 		</div>
+
+		<p id="resultsLabel" hidden> Results: </p>
+		<div class="results" id="results" hidden></div>
 		<hr>
 		<div class="footer">
 			© 2020 Aniruddha Deb. All rights reserved. 

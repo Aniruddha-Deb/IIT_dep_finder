@@ -5,19 +5,29 @@ function addOptionToResults(option) {
 
 	var result = 
 	`<div class="result">
-		<div class="resultHeader">
-			<div class="resultHeaderFiller"></div>
+		<div class="resultTable">
+			<div class="resultHeader">
+				<div class="resultHeaderFiller"></div>
 				<div class="resultHeaderPrompt">OR</div>
-					<div class="resultHeaderPrompt">CR</div>
-				</div>
+				<div class="resultHeaderPrompt">CR</div>
+			</div>
 			<div class="resultMainData">
 				<div class="resultInstitute">${option[0]}</div>
 				<div class="resultRank">${option[5]}</div>
 				<div class="resultRank">${option[7]}</div>
 			</div>
-		<div class="resultDepartment">${option[1]}</div>
+		</div>
+		<div class="resultFooter">
+			<div class="resultDepartment">${option[1]}</div>
+			<div class="resultQuota">${option[3]}</div>
+		</div>
 	</div>`
+
+	if (option[4] == "Female-only") {
+		result = result.replaceAll("resultRank", "resultRank female");
+	}
 	document.getElementById("results").insertAdjacentHTML("beforeend", result);
+	document.getElementById
 }
 
 function updateResults(jsonResults) {
@@ -29,10 +39,13 @@ function updateResults(jsonResults) {
 }
 
 function getDeps() {
+	document.getElementById("resultsLabel").hidden = false;
+	document.getElementById("results").hidden = false;
+	document.getElementById("results").innerHTML = "";
 	data = { 
 		advRank: document.getElementById("rank").value,
 		category: "OPEN",
-		gender: "Gender-Neutral",
+		gender: "Female-only",
 		prepRL: 0
 	}
 
@@ -46,4 +59,22 @@ function getDeps() {
 	}
 
 	xhttp.send(JSON.stringify(data));
+}
+
+function showAdvOptions() {
+	var advOptions = document.getElementById("advOptions");
+	var arrow = document.getElementById("advOptionsButtonArrow")
+	if (advOptions.style.maxHeight == 0) {
+		// expand
+		arrow.classList.remove("right");
+		arrow.classList.add("down");
+		advOptions.style.maxHeight = advOptions.scrollHeight + "px";
+	}
+	else {
+		// collapse
+		arrow.classList.remove("down");
+		arrow.classList.add("right");
+		advOptions.style.maxHeight = null;
+	}
+	console.log("adv options clicked");
 }
