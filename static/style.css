@@ -78,9 +78,54 @@ h1 {
 	transition: max-height 0.3s ease-out;
 	max-height: 0;
 	overflow: hidden;
+	display: block;
+	margin: auto;
+	align: center;
+	text-align: center;
+	color: lightgrey;
 }
 
-input {
+.advOptionsTable {
+	display: table;
+	align: center;
+	text-align: center;
+	margin: auto;
+}
+
+.advOptionsTableRow {
+	display: table-row;
+	align: center;
+}
+
+.advOptionsTableCell {
+	display: table-cell;
+	padding: 10px 15px 10px 15px;
+}
+
+select {
+	background-color: #222322;
+	color: lightgrey;
+	border-radius: 5px;
+	margin: 0 5px 0 5px;
+	border: 1px solid lightgrey;
+	outline: none;
+}
+
+select:hover {
+	color: white;
+	cursor: pointer;
+}
+
+option {
+	padding: 5pt;
+	color: lightgrey;
+}
+
+.checkbox:hover {
+	cursor: pointer;
+}
+
+.advRank {
 	background-color: #222322;
 	color: #aaaaaa;
 	width: 50%;

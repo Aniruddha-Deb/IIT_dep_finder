@@ -1,19 +1,81 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>IIT Dep Finder</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript" src="controller.js"></script>
 	</head>
-	<body>
+	<body onload="setup()">
 		<div class="content">
 			<h1>IIT Dep Finder</h1>
-			<input type="number" id="rank" placeholder="JEE Advanced Rank" min="1">
+			<input type="number" id="rank" class="advRank" placeholder="JEE Advanced Rank" min="1">
 			<button class="submitButton" onclick="getDeps()">Go</button>
 			<button class="advOptionsButton" id="advOptionsButton" onclick="showAdvOptions()">
 				<i id="advOptionsButtonArrow" class="arrow right"></i> Advanced Options
 			</button>
 			<div class="advOptions" id="advOptions">
-				just some test content here
+				<div class="advOptionsTable">
+					<div class="advOptionsTableRow">
+						<div class="advOptionsTableCell">
+							<label for="category">Category:</label>
+							<select name="category" id="category">
+								<option value="OPEN">Open</option>
+								<option value="OPEN (PwD)">Open (PwD)</option>
+								<option value="SC">SC</option>
+								<option value="SC (PwD)">SC (PwD)</option>
+								<option value="ST">ST</option>
+								<option value="ST (PwD)">ST (PwD)</option>
+								<option value="EwS">EwS</option>
+								<option value="EwS (PwD)">EwS (PwD)</option>
+								<option value="OBC-NCL">OBC-NCL</option>
+								<option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
+							</select>
+						</div>
+						<div class="advOptionsTableCell">
+							<label for="gender">Gender:</label>
+							<select name="gender" id="gender">
+								<option value="Gender-Neutral">Gender Neutral</option>
+								<option value="Female-only">Female Only</option>
+							</select>
+						</div>
+					</div>
+					<div class=advOptionsTableRow">
+						<label for="prepRL">Preparatory Rank List</label>
+						<input type="checkbox" class="checkbox" id="prepRL" name="prepRL" value="prepRL">
+					</div>
+				</div>
+			</div>
+			<button class="advOptionsButton" id="instiSearchButton" onclick="showInstituteSearch()">
+				<i id="instiSearchButtonArrow" class="arrow right"></i> Institute Search
+			</button>
+			<div class="advOptions" id="instiSearch">
+				<label for="institute">Institute:</label>
+				<select name="institute" id="institute">
+					<option value="IIT Kharagpur">IIT Kharagpur</option>
+					<option value="IIT Bombay">IIT Bombay</option>
+					<option value="IIT Madras">IIT Madras</option>
+					<option value="IIT Kanpur">IIT Kanpur</option>
+					<option value="IIT Delhi">IIT Delhi</option>
+					<option value="IIT Guwahati">IIT Guwahati</option>
+					<option value="IIT Roorkee">IIT Roorkee</option>
+					<option value="IIT Ropar">IIT Ropar</option>
+					<option value="IIT Bhubaneswar">IIT Bhubaneswar</option>
+					<option value="IIT Gandhinagar">IIT Gandhinagar</option>
+					<option value="IIT Hyderabad">IIT Hyderabad</option>
+					<option value="IIT Jodhpur">IIT Jodhpur</option>
+					<option value="IIT Patna">IIT Patna</option>
+					<option value="IIT Indore">IIT Indore</option>
+					<option value="IIT Mandi">IIT Mandi</option>
+					<option value="IIT (BHU) Varanasi">IIT (BHU) Varanasi</option>
+					<option value="IIT Palakkad">IIT Palakkad</option>
+					<option value="IIT Tirupati">IIT Tirupati</option>
+					<option value="IIT (ISM) Dhanbad">IIT (ISM) Dhanbad</option>
+					<option value="IIT Bhilai">IIT Bhilai</option>
+					<option value="IIT Goa">IIT Goa</option>
+					<option value="IIT Jammu">IIT Jammu</option>
+					<option value="IIT Dharwad">IIT Dharwad</option></div>
+				</select>
+				<button onclick="getInstiDeps()">Search</button>
 			</div>
 		</div>
 

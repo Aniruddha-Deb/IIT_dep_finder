@@ -24,11 +24,19 @@ CATEGORY_KEY  = "category"
 GENDER_KEY    = "gender"
 PREP_KEY      = "prepRL"
 
-ADV_NOP_QUERY = """
+ADV_QUERY = """
 SELECT * FROM orcr_2020 WHERE 
 ((OPR_prep=:prepRL AND CPR_prep=:prepRL) OR (CPR_prep=:prepRL)) AND 
-((OPR>=:advRank AND CPR<=:advRank) OR ((CPR-:advRank)>=0 AND (CPR-:advRank)<300)) AND
+((OPR<=:advRank AND CPR>=:advRank) OR ((CPR-:advRank)>=0 AND (CPR-:advRank)<300)) AND
 institute LIKE "Indian Institute of Technology %" AND 
+category=:category AND gender=:gender
+ORDER BY CPR ASC
+"""
+
+INSTI_INSPECT_QUERY = """
+SELECT * FROM orcr_2020 WHERE
+((OPR_prep=:prepRL AND CPR_prep=:prepRL) OR (CPR_prep=:prepRL)) AND 
+institute=:institute AND CPR>=:advRank AND
 category=:category AND gender=:gender
 ORDER BY CPR ASC
 """
@@ -42,15 +50,21 @@ def root():
 def serve_static(file):
 	return app.send_static_file(file)
 
-@app.route("/api/getdeps", methods=["POST"])
-def get_deps():
-
+def exec_select_query(query, data):
 	db_conn = sqlite3.connect(DB_LOC)
 	db_cursor = db_conn.cursor()
 
-	data = request.get_json()
-	db_cursor.execute(ADV_NOP_QUERY, data)
+	db_cursor.execute(query, data)
 	deps = db_cursor.fetchall()
+	db_conn.close()
+	return deps;
 
-	return json.dumps(deps)
+@app.route("/api/getdeps", methods=["POST"])
+def get_deps():
+	data = request.get_json()
+	return json.dumps(exec_select_query(ADV_QUERY, data))
 
+@app.route("/api/institute", methods=["POST"])
+def institute_inspect():
+	data = request.get_json()
+	return json.dumps(exec_select_query(INSTI_INSPECT_QUERY, data))
