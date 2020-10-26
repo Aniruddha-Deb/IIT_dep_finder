@@ -11,8 +11,8 @@ KEY_OPR        = "OPR"
 KEY_CPR        = "CPR"
 
 def html_to_csv():
-	outfile = open("orcr_2020.txt", "w");
-	infile = open("orcr.html", "r");
+	outfile = open("orcr_2020_r2.txt", "w");
+	infile = open("orcr_r2.html", "r");
 	soup = BeautifulSoup(infile, "lxml");
 	
 	main_table = soup.find("table", {"class":"border_table_at"})
@@ -21,18 +21,21 @@ def html_to_csv():
 	for row in table_rows:
 		cells = row.find_all("td")
 		for cell in cells:
-			outfile.write(cell.text.strip().replace(",", "") + ",") 
+			field = cell.text.strip()
+			if field == "Female-only (including Supernumerary)":
+				field = field.replace(" (including Supernumerary)", "")
+			outfile.write(field.replace(",", "") + ",") 
 		outfile.write("\n")
 	
 	outfile.close()
 	infile.close()
 
 def csv_to_sqlite():
-	reader = csv.reader(open("orcr_2020_r1.txt", "r"))
-	conn = sqlite3.connect("data.db")
+	reader = csv.reader(open("data/csv/orcr_2020_r2.txt", "r"))
+	conn = sqlite3.connect("data/data.db")
 
 	c = conn.cursor()
-	query = "INSERT INTO orcr_2020 VALUES (?,?,?,?,?,?,?,?,?)"
+	query = "INSERT INTO orcr_2020_r2 VALUES (?,?,?,?,?,?,?,?,?)"
 
 	for row in reader:
 		if row[5].endswith("P"):
