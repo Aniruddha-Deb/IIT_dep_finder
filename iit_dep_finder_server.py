@@ -2,7 +2,7 @@ from flask import Flask, request, send_from_directory
 import sqlite3
 import json
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
 DB_LOC = "data/data.db"
 KEY_INSTITUTE  = "institute"
@@ -40,15 +40,6 @@ institute=:institute AND CPR>=:advRank AND
 category=:category AND gender=:gender
 ORDER BY CPR ASC
 """
-
-@app.route("/")
-@app.route("/index")
-def root():
-	return app.send_static_file("index.html")
-
-@app.route("/<file>")
-def serve_static(file):
-	return app.send_static_file(file)
 
 def exec_select_query(query, data):
 	db_conn = sqlite3.connect(DB_LOC)

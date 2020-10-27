@@ -59,7 +59,7 @@ function getDeps() {
 	}
 
 	xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "api/getdeps", true);
+	xhttp.open("POST", "../api/getdeps", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == XMLHttpRequest.DONE) {
@@ -84,7 +84,7 @@ function getInstiDeps() {
 	}
 	
 	xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "api/institute", true);
+	xhttp.open("POST", "../api/institute", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == XMLHttpRequest.DONE) {
