@@ -50,12 +50,12 @@ def exec_select_query(query, data):
 	db_conn.close()
 	return deps;
 
-@app.route("/api/getdeps", methods=["POST"])
+@app.route("/IIT_dep_finder/api/getdeps", methods=["POST"])
 def get_deps():
 	data = request.get_json()
 	return json.dumps(exec_select_query(ADV_QUERY, data))
 
-@app.route("/api/institute", methods=["POST"])
+@app.route("/IIT_dep_finder/api/institute", methods=["POST"])
 def institute_inspect():
 	data = request.get_json()
 	return json.dumps(exec_select_query(INSTI_INSPECT_QUERY, data))
