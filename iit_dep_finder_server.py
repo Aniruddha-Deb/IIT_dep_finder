@@ -1,6 +1,7 @@
 from flask import Flask, request, send_from_directory
 import sqlite3
 import json
+import conf
 
 app = Flask(__name__)
 
@@ -42,7 +43,7 @@ ORDER BY CPR ASC
 """
 
 def exec_select_query(query, data):
-	db_conn = sqlite3.connect(DB_LOC)
+	db_conn = sqlite3.connect(conf.db_loc)
 	db_cursor = db_conn.cursor()
 
 	db_cursor.execute(query, data)
@@ -50,12 +51,12 @@ def exec_select_query(query, data):
 	db_conn.close()
 	return deps;
 
-@app.route("/IIT_dep_finder/api/getdeps", methods=["POST"])
+@app.route(conf.api_paths["rank_query"], methods=["POST"])
 def get_deps():
 	data = request.get_json()
-	return json.dumps(exec_select_query(ADV_QUERY, data))
+	return json.dumps(exec_select_query(conf.queries["rank_query"], data))
 
-@app.route("/IIT_dep_finder/api/institute", methods=["POST"])
+@app.route(conf.api_paths["institute_query"], methods=["POST"])
 def institute_inspect():
 	data = request.get_json()
-	return json.dumps(exec_select_query(INSTI_INSPECT_QUERY, data))
+	return json.dumps(exec_select_query(conf.queries["institute_query"], data))
