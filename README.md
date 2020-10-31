@@ -13,16 +13,15 @@ after this, the preferred way of doing it is to use `venv`:
 ```
 virtualenv venv
 echo "venv" > .gitignore
-source venv/bin/activate
-pip install -r requirements.txt
 ```
+create a `logs` directory to store the logs, add `logs` to `.gitignore` and also
+create two files, `gunicorn-access.log` and `gunicorn-error.log` to the log folder.
+You can start gunicorn with the following commands:
+```
+gunicorn -c gunicorn.conf.py wsgi:app
+```
+And you'll need a web server to serve static content, so also set up NGINX.
 
 ## Usage:
-```
-flask run
-```
-This starts the server on localhost:5000. Routing options to be added soon
-
-Data is taken from JoSAA 2020 round 1 seat allocation, and may be inaccurate 
-for the lower ranks. There were ~400ish unfilled seats for the lower ranks, which
-may contribute to the inaccuracy. 
+go to \<site url\>/IIT\_dep\_finder to see the webpage, once the server setup 
+is done.
