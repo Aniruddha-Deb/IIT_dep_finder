@@ -25,7 +25,7 @@ GENDER_KEY    = "gender"
 PREP_KEY      = "prepRL"
 
 ADV_QUERY = """
-SELECT * FROM orcr_2020_r3 WHERE 
+SELECT * FROM orcr_2020_r4 WHERE 
 ((OPR_prep=:prepRL AND CPR_prep=:prepRL) OR (CPR_prep=:prepRL)) AND 
 ((OPR<=:advRank AND CPR>=:advRank) OR ((CPR-:advRank)>=0 AND (CPR-:advRank)<300)) AND
 institute LIKE "Indian Institute of Technology %" AND 
@@ -34,7 +34,7 @@ ORDER BY CPR ASC
 """
 
 INSTI_INSPECT_QUERY = """
-SELECT * FROM orcr_2020_r3 WHERE
+SELECT * FROM orcr_2020_r4 WHERE
 ((OPR_prep=:prepRL AND CPR_prep=:prepRL) OR (CPR_prep=:prepRL)) AND 
 institute=:institute AND CPR>=:advRank AND
 category=:category AND gender=:gender

@@ -11,8 +11,8 @@ KEY_OPR        = "OPR"
 KEY_CPR        = "CPR"
 
 def html_to_csv():
-	outfile = open("data/csv/orcr_2020_r3.txt", "w");
-	infile = open("data/html/orcr_2020_r3.html", "r");
+	outfile = open("data/csv/orcr_2020_r4.txt", "w");
+	infile = open("data/html/orcr_2020_r4.html", "r");
 	soup = BeautifulSoup(infile, "lxml");
 	
 	main_table = soup.find("table", {"class":"border_table_at"})
@@ -31,11 +31,11 @@ def html_to_csv():
 	infile.close()
 
 def csv_to_sqlite():
-	reader = csv.reader(open("data/csv/orcr_2020_r3.txt", "r"))
+	reader = csv.reader(open("data/csv/orcr_2020_r4.txt", "r"))
 	conn = sqlite3.connect("data/data.db")
 
 	c = conn.cursor()
-	query = "INSERT INTO orcr_2020_r3 VALUES (?,?,?,?,?,?,?,?,?)"
+	query = "INSERT INTO orcr_2020_r4 VALUES (?,?,?,?,?,?,?,?,?)"
 
 	for row in reader:
 		if row[5].endswith("P"):
